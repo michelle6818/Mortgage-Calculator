@@ -30,7 +30,7 @@
               <a class="nav-link" href="code.html">Code</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://github.com/michelle6818/TacoCat">GitHub</a>
+            <a class="nav-link" target="_blank" href="https://github.com/michelle6818/Mortgage-Calculator">GitHub</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" target="_blank" href="https://michellelongworth-portfolio.netlify.app/index.html">Portfolio</a>
@@ -51,31 +51,75 @@
     </div>
   </div>
   </div>
-  </div>
-
+</header>
 
 <!-- This is where I lay out the UI for the exercise -->
-<div class="container">
-    <div class="row">
-        <div class="col-3 mr-2">
-            <label for="loan">Loan Amount</label>
-              <input id="loan" type="number"> 
-        </div>
-        <div class="col-8">
-          <p id="reverseUserWord" style="font-weight:bold"></p>
-        </div>
-    </div>
-    <br>
-      <div class="row">
-        <div class="offset-3 col-3">
-            <button id="btnWord" class="btn btn-primary">Click Me</button>
-            <button id="btnClear" class="btn btn-outline-primary">Clear</button>
+<div class="container-fluid">
+    <div class="row mr-2">
+        <div class="col-4">
+            <label for="loan">Loan Amount</label> 
+            <input id="loan" type="number"> 
+            <br>
+            <label for="term">Term (Months)</label> 
+            <input id="term" type="number"> 
+            <br>
+            <label for="rate">Interest Rate</label> 
+            <input id="rate" type="number"> 
+           <br>
+           <br>
+        <div class="offset-6 col-md">
+            <button id="btnCalculate" class="btn btn-outline-dark">Calculate</button>
+            <!-- <button id="btnClear" class="btn btn-outline-primary">Clear</button> -->
         </div> 
-          <div class="col-3">
-             <p id="answer" style="font-weight:bold"></p> 
-          </div>        
-</div>
-</header>
+       </div>   
+        <div class="col-8">
+            <center><p>Your Monthly Payments</p></center>
+           <center><p id="monthlyPmt" type="number"></p></center>
+           <br>
+          <p>Total Principal:</p>
+           <p id="totalPrin" type="number"></p> 
+           <p>Total Interest:</p>
+           <p id="totalInt" type="number"></p>
+           <p>Total Cost:</p>
+           <p id="totalCost" type="number"></p>
+       </div>
+    </div>
+
+
+<div class="card">
+<div class="card-header px-2 py-0">
+     <table class="table mb-0" tr style="background-color: lightblue strip">
+        <thead>
+        <tr>
+    <td class="col-2 border-0">
+         <strong>Month</strong>
+        </td>
+    <td class="col-2 border-0">
+        <strong>Payment</strong>
+        </td>
+    <td class="col-2 border-0">
+        <strong>Principal</strong>
+        </td>
+    <td class="col-2 border-0">
+        <strong>Interest</strong>
+        </td>
+    <td class="col-2 border-0">
+        <strong>Total Interest</strong>
+        </td>
+    <td class="col-2 border-0">
+        <strong>Balance</strong>
+        </td>
+    </tr>
+    </thead>  
+             
+         </table>
+
+      
+
+     </div>
+
+    </div>
+
 
 
 
