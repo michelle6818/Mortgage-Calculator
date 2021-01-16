@@ -10,10 +10,13 @@ function calculate(){
 // var y = -term
    var x = (1 + rate/1200)
    var y = -term
-   var z = loan * (rate/1200)
+   var z = loan*(rate/1200)
    var l = 1 - Math.pow(x,y)
    var q = z / l
-   
+// need to work on getting it in dollars, decimal 
 document.getElementById("monthlyPmt").innerHTML = q;
-
+document.getElementById("totalPrin").innerHTML = loan;
+document.getElementById("totalInt").innerHTML = z;
+document.getElementById("totalCost").innerHTML = loan + z;
 }
+
