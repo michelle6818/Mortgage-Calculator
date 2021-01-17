@@ -17,8 +17,8 @@ function calculate(){
 document.getElementById("monthlyPmt").innerHTML = `$${q.toFixed(2)}`;
 document.getElementById("totalPrin").innerHTML = `$${loan.toFixed(2)}`;
 // will need to wait to get "totalInt"
-// document.getElementById("totalInt").innerHTML = ; 
-document.getElementById("totalCost").innerHTML = `$${(loan + z).toFixed(2)}`;
+document.getElementById("totalInt").innerHTML = `$${totInt.toFixed(2)}`; 
+document.getElementById("totalCost").innerHTML = `$${(loan + totInt).toFixed(2)}`;
 
     //  TABLE
 // Months    = the term input
@@ -56,19 +56,35 @@ document.getElementById("int").innerHTML = `$${z.toFixed(2)}`;
 document.getElementById("totInt").innerHTML = `$${z.toFixed(2)}`; 
 document.getElementById("balance").innerHTML = `$${(loan - (q-z)).toFixed(2)}`;
 
-
-let prevBal = loan;
-let pmtPrin = [];
-let pmtInt = [];
-let totInt = [];
-let balance = [];
-
+// remaining months remember to start at 1 not 0 and include last month <=
+// set prevBal first since the others incorporate...same w/ interest before prin
 
 // for (loop = 1; loop <= term; loop++){
-//   let pmtPrin = monthlyPmt - 
-// }
-   
+//   let prevBal = loan - pmtPrin;
+//   let prevBal = prevBal - pmtPrin; 
+//   let pmtPrin = q - pmtInt;
+//   let pmtInt = prevBal * rate/1200;
+//   let totInt = [];
+//   let balance = prevBal - pmtPrin;
 
+//   totInt.push(pmtInt);
+//   document.getElementById("theTable").innerHTML += 
+//   `<tr>
+//   <th scope="row">${loop}</th>
+//   <th>${total_monthly_payment}</th>
+//   <th>${principal_payment}</th>
+//   <th>${interest_payment}</th>
+//   <th>${total_interest}</th>
+//   <th>${remaining_balance}</th>
+//   </tr>`
+ }
+ 
+//  document.getElementById("months").innerHTML = `${loop}`;
+//  document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
+//  document.getElementById("prin").innerHTML = `$${pmtPrin.toFixed(2)}`;
+//  document.getElementById("int").innerHTML = `$${pmtInt.toFixed(2)}`;
+//  document.getElementById("totInt").innerHTML = `$${totInt.toFixed(2)}`;
+//  document.getElementById("balance").innerHTML = `$${balance.toFixed(2)}`;
+ 
 
-}
 
