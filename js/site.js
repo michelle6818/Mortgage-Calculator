@@ -16,7 +16,22 @@ function calculate(){
 // need to work on getting it in dollars, decimal 
 document.getElementById("monthlyPmt").innerHTML = q;
 document.getElementById("totalPrin").innerHTML = loan;
-document.getElementById("totalInt").innerHTML = z;
-document.getElementById("totalCost").innerHTML = loan + z;
+// will need to wait to get "totalInt"
+// document.getElementById("totalInt").innerHTML = z * term; 
+// document.getElementById("totalCost").innerHTML = loan + z;
+
+    //  TABLE
+// Months    = the term input
+// Payment   = "monthlyPmt"(q)
+// Principal = "monthlyPmt"(q) - interest payment(below)
+// Interest  =  previous remaining balance * rate/1200  LOOP...
+// Total Int = current month's interest plus previous months  LOOP...
+// Balance   = previous remaining balance - principal pmt
+
+
+
+
+
+
 }
 
