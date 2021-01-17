@@ -17,33 +17,40 @@ function calculate(){
 document.getElementById("monthlyPmt").innerHTML = `$${q.toFixed(2)}`;
 document.getElementById("totalPrin").innerHTML = `$${loan.toFixed(2)}`;
 // will need to wait to get "totalInt"
-// document.getElementById("totalInt").innerHTML = `$${(z * term).toFixed(2)}`; 
+// document.getElementById("totalInt").innerHTML = ; 
 document.getElementById("totalCost").innerHTML = `$${(loan + z).toFixed(2)}`;
 
     //  TABLE
 // Months    = the term input
-// the original "remaining balance" is always 25,000 (like 1st bld in SunsetHills
+// the original "previous balance" is always 25,000 (like 1st bld in SunsetHills
 //   ..so start loop at 1) Need to include the last value, so <= the length instead of <
-// need to set "previous remaining balance" for Interest and Balance
+// need to set "remaining balance" and "prev remaining balance" for Interest and Balance
 // need to set Int Pmt as "int" and Prin Pmt as "prin"
 // total interest LOOP
 // Column 1 is months
-//   document.getElementById("months").innerHTML = term; 
+//   document.getElementById("months").innerHTML = term; ??? needs to loop
 // Column 2 is
   document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
 // Column 3 is
-//   
+// document.getElementById("prin").innerHTML = `$${(q - (prevBal * rate/1200)).toFixed(2)};`
+// Columnn 4 is
+// document.getElementById("int").innerHTML = `$${(prevBal * rate/1200).toFixed(2)}`;
+// Column 5 is
+// document.getElementById("totInt").innerHTML = `$${(totalInt).toFixed(2)}`;
+// Column 6 is
+// document.getElementById("balance").innerHTML = `$${(prevBal - pmtPrinTotal).toFixed(2)};
+// start remaining/previous balance as the full loan
+let prevBal = loan;
+let pmtPrin = [];
+let pmtInt = [];
+let totInt = [];
+let balance = [];
 
-var monthsOutput  = term[0];
-var remainBal = "";
-var pmtPrin = "";
-var pmtInt = "";
 
-for (i = 1; i <= term.length; i++){
-    monthsOutput += term[i];
-}
-   monthsOutput.innerHTML = `${i}`;
-// document.getElementById("months").innerHTML = months;
+// for (loop = 1; loop <= term; loop++){
+//   let pmtPrin = monthlyPmt - 
+// }
+   
 
 
 // Payment   = "monthlyPmt"(q)
