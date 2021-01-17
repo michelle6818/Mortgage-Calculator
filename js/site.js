@@ -22,6 +22,14 @@ document.getElementById("totalPrin").innerHTML = loan;
 
     //  TABLE
 // Months    = the term input
+
+var months = "";
+var i;
+for (i = 0; i < term.length; i++){
+    months += term[i];
+}
+document.getElementById("months").innerHTML = months;
+
 // Payment   = "monthlyPmt"(q)
 // Principal = "monthlyPmt"(q) - interest payment(below)
 // Interest  =  previous remaining balance * rate/1200  LOOP...
