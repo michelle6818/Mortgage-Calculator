@@ -55,44 +55,96 @@
 
 <!-- This is where I lay out the UI for the exercise -->
 <div class="container">
-    <div class="row mr-2">
-      <div class="card-columns">
-        <div class="card">
-          <br>
-            <label for="loan">Loan Amount</label> 
-            <input id="loan" type="number"> 
-            <br>
+    <div class="row" div id="top">
+      <div class="col-4 mr-2 mt-2" div="leftside">
+        <div class="card mt-2">
+        <div class="row">
+          <div class="col ml-2">
+            <label for="loan">Loan Amount $:</label>
+          </div> 
+          <div class="col mr-1">
+            <input id="loan" type="number">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col ml-2">
             <label for="term">Term (Months)</label> 
+            </div>
+            <div class="col mr-1">
             <input id="term" type="number"> 
-            <br>
-            <label for="rate">Interest Rate</label> 
+            </div>
+        </div>
+            <div class="row">
+              <div class="col ml-2">
+            <label for="rate">Interest Rate %</label> 
+            </div>
+            <div class="col mr-1">
             <input id="rate" type="number"> 
-           <br>
-           <br>
-        <div class="offset-6 col-md">
+           </div>
+            </div>
+            <br>
+        <div class="row mr-1 justify-content-end">
             <button id="btnCalculate" class="btn btn-outline-dark">Calculate</button>
             <!-- <button id="btnClear" class="btn btn-outline-primary">Clear</button> -->
         </div> 
-       </div>   
-        <div class="card">
-            <center><h5>Your Monthly Payments</h5></center>
-           <center><p id="monthlyPmt" type="number"></p></center>
-           <br>
-          <p>Total Principal:</p>
-           <p id="totalPrin" type="number"></p> 
-           <p>Total Interest:</p>
-           <p id="totalInt" type="number"></p>
-           <p>Total Cost:</p>
+       </div> 
+      </div> 
+
+    <div class="col-7 justify-content-end" id="rightside">
+      <div class="card">
+      <div class="row">
+        <div class="col">
+          <div class="row justify-content-center">
+            <h4>Your Monthly Payments</h4>
+          </div>
+          <div class="row justify-content-center pt-2 pb">
+           <h5 id="monthlyPmt" type="number"></h5>
+           </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col ml-5">
+          <h6>Total Principal:</h6>
+          </div>
+          <div class="col">
+            <div class="row">
+           <h6 id="totalPrin" type="number"></h6> 
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col ml-5">
+           <h6>Total Interest:</h6>
+           </div>
+           <div class="col">
+             <div class="row">
+           <h6 id="totalInt" type="number"></h6>
+             </div>
+           </div>
+        </div>
+        <div class="row">
+          <div class="col ml-5">
+           <h6>Total Cost:</h6>
+          </div>
+          <div class="col">
+             <div class="row">
            <p id="totalCost" type="number"></p>
        </div>
     </div>
 </div>
-
+</div>
+    </div>
+      </div>
+    </div>
+    </div>
+<!-- table -->
 <div class="row" id="tr">
-    <table class="table table-striped table-bordered mb-0" tr style="background-color: lightblue strip">
-        <thead>
-        <tr>
-    
+  <table class="table table-responsive-lg table-striped table-bordered mb-0 mt-3" tr style="background-color: lightblue strip">
+    <thead>
+      <tr>
          <th scope="col"><strong>Month</strong></th>
          <th scope="col"><strong>Payment</strong></th>
          <th scope="col"><strong>Principal</strong></th>
@@ -102,18 +154,18 @@
         </tr>
     </thead>            
        <tbody>
-        <tr>
-        <td scope ="col" id="months" type="number"></td>
-        <td scope ="col" id="pmt" type="number"></td>
-        <td scope ="col" id="prin" type="number"></td>
-        <td scope ="col" id="int" type="number"></td>
-        <td scope ="col" id="totInt" type="number"></td>
-        <td scope ="col" id="balance" type="number"></td>
+        <tr scope="row">
+        <td scope ="col" id="months" type="number">0</td>
+        <td scope ="col" id="pmt" type="number">0.00</td>
+        <td scope ="col" id="prin" type="number">0.00</td>
+        <td scope ="col" id="int" type="number">0.00</td>
+        <td scope ="col" id="totInt" type="number">0.00</td>
+        <td scope ="col" id="balance" type="number">0.00</td>
         </tr>
+        
        </tbody>
       </table>
       </div>
-
     </div>
 
 
