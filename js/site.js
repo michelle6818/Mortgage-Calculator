@@ -59,8 +59,9 @@ document.getElementById("balance").innerHTML = `$${(loan - (q-z)).toFixed(2)}`;
 
 // remaining months remember to start at 1 not 0 and include last month <=
 // set prevBal first since the others incorporate...same w/ interest before prin
-
+var month = [];
 for (loop = 1; loop <= term; loop++){
+  month += loop;
   let bal = loan - pmtPrin;
   let prevBal = bal - pmtPrin; 
   let pmtPrin = q - pmtInt;
@@ -70,7 +71,7 @@ for (loop = 1; loop <= term; loop++){
 
   totInt.push(pmtInt);
 }
-  document.getElementById("months").innerHTML = `${loop}`;
+  document.getElementById("months").innerHTML = month;
  document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
  document.getElementById("prin").innerHTML = `$${pmtPrin.toFixed(2)}`;
  document.getElementById("int").innerHTML = `$${pmtInt.toFixed(2)}`;
