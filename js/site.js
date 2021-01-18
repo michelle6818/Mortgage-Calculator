@@ -1,11 +1,12 @@
 document.getElementById("btnCalculate").addEventListener("click", calculate);
+document.getElementById("theTable").innerHTML = ""
 
 function calculate(){
     let loan = parseInt(document.getElementById("loan").value);
     let term = parseInt(document.getElementById("term").value);
     let rate = parseInt(document.getElementById("rate").value);
 // get monthly pmt calculations
-//  "monthlyPmt = loan * (rate/1200) / Math.pow(x,y)
+//  monthlyPmt = loan * (rate/1200) / Math.pow(x,y)
 // var x = 1 - (1 + (1 + rate/1200))
 // var y = -term
    var x = (1 + rate/1200)
@@ -29,7 +30,7 @@ document.getElementById("totalCost").innerHTML = `$${(loan + totInt).toFixed(2)}
 // Balance   = previous remaining balance - principal pmt
 
 
-// the original "previous balance" is always 25,000 (like 1st bld in SunsetHills
+// the original "previous balance" is always the loan e.g.25,000 (like 1st bld in SunsetHills
 //   ..so start loop at 1) Need to include the last value, so <= the length instead of <
 // need to set "remaining balance" and "prev remaining balance" for Interest and Balance
 // need to set Int Pmt as "int" and Prin Pmt as "prin"
@@ -59,32 +60,28 @@ document.getElementById("balance").innerHTML = `$${(loan - (q-z)).toFixed(2)}`;
 // remaining months remember to start at 1 not 0 and include last month <=
 // set prevBal first since the others incorporate...same w/ interest before prin
 
-// for (loop = 1; loop <= term; loop++){
-//   let prevBal = loan - pmtPrin;
-//   let prevBal = prevBal - pmtPrin; 
-//   let pmtPrin = q - pmtInt;
-//   let pmtInt = prevBal * rate/1200;
-//   let totInt = [];
-//   let balance = prevBal - pmtPrin;
+for (loop = 1; loop <= term; loop++){
+  let bal = loan - pmtPrin;
+  let prevBal = bal - pmtPrin; 
+  let pmtPrin = q - pmtInt;
+  let pmtInt = prevBal * rate/1200;
+  let totInt = [];
+  let balance = prevBal - pmtPrin;
 
-//   totInt.push(pmtInt);
-//   document.getElementById("theTable").innerHTML += 
-//   `<tr>
-//   <th scope="row">${loop}</th>
-//   <th>${total_monthly_payment}</th>
-//   <th>${principal_payment}</th>
-//   <th>${interest_payment}</th>
-//   <th>${total_interest}</th>
-//   <th>${remaining_balance}</th>
-//   </tr>`
- }
+  totInt.push(pmtInt);
+}
+  document.getElementById("months").innerHTML = `${loop}`;
+ document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
+ document.getElementById("prin").innerHTML = `$${pmtPrin.toFixed(2)}`;
+ document.getElementById("int").innerHTML = `$${pmtInt.toFixed(2)}`;
+ document.getElementById("totInt").innerHTML = `$${totInt.toFixed(2)}`;
+ document.getElementById("balance").innerHTML = `$${balance.toFixed(2)}`;
+}
+// document.getElementById("theTable").innerHTML += `<tr>
+// <th scope="row">${loop}</th>
+// <th>${q}</th>
+// <th>${pmtPrin}</th>
+// <th>${pmtInt}</th>
+// <th>${totInt}</th>
+// <th>${balance}</th></tr>`
  
-//  document.getElementById("months").innerHTML = `${loop}`;
-//  document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
-//  document.getElementById("prin").innerHTML = `$${pmtPrin.toFixed(2)}`;
-//  document.getElementById("int").innerHTML = `$${pmtInt.toFixed(2)}`;
-//  document.getElementById("totInt").innerHTML = `$${totInt.toFixed(2)}`;
-//  document.getElementById("balance").innerHTML = `$${balance.toFixed(2)}`;
- 
-
-
