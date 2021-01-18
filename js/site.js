@@ -79,10 +79,10 @@ for (loop = 1; loop <= term; loop++){
  document.getElementById("balance").innerHTML = `$${balance.toFixed(2)}`;
 }
 // document.getElementById("theTable").innerHTML += `<tr>
-// <th scope="row">${loop}</th>
-// <th>${q}</th>
-// <th>${pmtPrin}</th>
-// <th>${pmtInt}</th>
-// <th>${totInt}</th>
-// <th>${balance}</th></tr>`
+// <td scope="row">${loop}</td>
+// <td>${q}</td>
+// <td>${pmtPrin}</td>
+// <td>${pmtInt}</td>
+// <td>${totInt}</td>
+// <td>${balance}</td></tr>`
  
