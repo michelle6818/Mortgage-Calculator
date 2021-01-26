@@ -1,25 +1,82 @@
-document.getElementById("btnCalculate").addEventListener("click", calculate);
-document.getElementById("theTable").innerHTML = ""
+document.getElementById("btnCalc").addEventListener("click", buildSchedule);
+// document.getElementById("scheduleTable").style.visibility = "visible";
 
-function calculate(){
-    let loan = parseInt(document.getElementById("loan").value);
-    let term = parseInt(document.getElementById("term").value);
-    let rate = parseInt(document.getElementById("rate").value);
-// get monthly pmt calculations
-//  monthlyPmt = loan * (rate/1200) / Math.pow(x,y)
-// var x = 1 - (1 + (1 + rate/1200))
-// var y = -term
-   var x = (1 + rate/1200)
-   var y = -term
-   var z = loan*(rate/1200)
-   var l = 1 - Math.pow(x,y)
-   var q = z / l
-// need to work on getting it in dollars, decimal 
-document.getElementById("monthlyPmt").innerHTML = `$${q.toFixed(2)}`;
-document.getElementById("totalPrin").innerHTML = `$${loan.toFixed(2)}`;
-// will need to wait to get "totalInt"
-document.getElementById("totalInt").innerHTML = `$${totInt.toFixed(2)}`; 
-document.getElementById("totalCost").innerHTML = `$${(loan + totInt).toFixed(2)}`;
+//calculate loan payment
+function calcPayment(amount, rate, term){
+    return (amount * rate) / (1 - Math.pow(1 + rate, -term));
+  }
+
+  //calculate interest for current balance
+function calcInterest(balance, rate){
+    return balance * rate;
+}
+
+//following is for the table
+function buildSchedule(){
+
+  // document.getElementById("scheduleTable").style.visibility = "visible";
+
+  let amount = document.getElementById("loanAmount").value;
+  let rate = document.getElementById("loanRate").value;
+  let term = document.getElementById("loanTerm").value;
+
+  rate = rate / 1200;
+
+// set up some variables that hold values in the schedule
+let payment = calcPayment(amount, rate, term);
+let balance = amount;
+let totalInterest = 0;
+let monthlyPrincipal = 0;
+let monthlyInterest = 0;
+let monthlyTotalInterest = 0;
+
+
+// write the results to our table
+let scheduleBody = document.getElementById("scheduleBody");
+let scheduleRow ="";
+// reset the table
+scheduleBody.innerHTML = "";
+
+for (month = 1; month <= term; month++){
+
+    monthlyInterest = calcInterest(balance, rate);
+    totalInterest += monthlyInterest;
+    monthlyPrincipal = payment - monthlyInterest;
+    balance = balance - monthlyPrincipal;
+    
+   //  write these values to the table
+   scheduleRow = `<tr><td>${month}</td>
+   <td>${payment.toFixed(2)}</td>
+   <td>${monthlyPrincipal.toFixed(2)}</td>
+   <td>${monthlyInterest.toFixed(2)}</td>
+   <td>${totalInterest.toFixed(2)}</td>
+   <td>${balance.toFixed(2)}</td></tr>`;
+
+   scheduleBody.innerHTML += scheduleRow;
+}
+
+document.getElementById("payment").innerHTML = Number(payment).toLocaleString("en-Us", {
+     style: "currency",
+     currency: "USD",
+});
+
+document.getElementById("totalPrincipal").innerHTML = Number(amount).toLocalString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+   document.getElementById("totalInterest").innerHTML = Number(totalInterest).toLocalString("en-US", {
+       style: "currency",
+       currency: "USD",
+     });
+     
+     let totalCost = Number(amount) + totalInterest;
+
+     document.getElementById("totalCost").innerHTML = Number(totalCost).toLocalString("en-US", {
+         style: "currency",
+         currency: "USD",
+       });
+}
 
     //  TABLE
 // Months    = the term input
@@ -49,40 +106,14 @@ document.getElementById("totalCost").innerHTML = `$${(loan + totInt).toFixed(2)}
 // document.getElementById("balance").innerHTML = `$${(prevBal - pmtPrinTotal).toFixed(2)};
 // start remaining/previous balance as the full loan
 
-// break into two functions -  one for the first month, then a loop
-document.getElementById("months").innerHTML = `1`;
-document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
-document.getElementById("prin").innerHTML = `$${(q - z).toFixed(2)}`;
-document.getElementById("int").innerHTML = `$${z.toFixed(2)}`;
-document.getElementById("totInt").innerHTML = `$${z.toFixed(2)}`; 
-document.getElementById("balance").innerHTML = `$${(loan - (q-z)).toFixed(2)}`;
+
 
 // remaining months remember to start at 1 not 0 and include last month <=
 // set prevBal first since the others incorporate...same w/ interest before prin
-var month = [];
-for (loop = 1; loop <= term; loop++){
-  month += loop;
-  let bal = loan - pmtPrin;
-  let prevBal = bal - pmtPrin; 
-  let pmtPrin = q - pmtInt;
-  let pmtInt = prevBal * rate/1200;
-  let totInt = [];
-  let balance = prevBal - pmtPrin;
 
-  totInt.push(pmtInt);
-}
-  document.getElementById("months").innerHTML = month;
- document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
- document.getElementById("prin").innerHTML = `$${pmtPrin.toFixed(2)}`;
- document.getElementById("int").innerHTML = `$${pmtInt.toFixed(2)}`;
- document.getElementById("totInt").innerHTML = `$${totInt.toFixed(2)}`;
- document.getElementById("balance").innerHTML = `$${balance.toFixed(2)}`;
-}
-// document.getElementById("theTable").innerHTML += `<tr>
-// <td scope="row">${loop}</td>
-// <td>${q}</td>
-// <td>${pmtPrin}</td>
-// <td>${pmtInt}</td>
-// <td>${totInt}</td>
-// <td>${balance}</td></tr>`
- 
+//   document.getElementById("months").innerHTML = month;
+//  document.getElementById("pmt").innerHTML = `$${q.toFixed(2)}`;
+//  document.getElementById("prin").innerHTML = `$${pmtPrin.toFixed(2)}`;
+//  document.getElementById("int").innerHTML = `$${pmtInt.toFixed(2)}`;
+//  document.getElementById("totInt").innerHTML = `$${totInt.toFixed(2)}`;
+//  document.getElementById("balance").innerHTML = `$${balance.toFixed(2)}`;
