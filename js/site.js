@@ -1,17 +1,8 @@
-document.getElementById("btnCalc").addEventListener("click", buildSchedule);
+document.getElementById("btnCalc").addEventListener("click", myMortgage);
 
-//calculate loan payment
-function calcPayment(loan, rate, term){
-    return (loan * rate) / (1 - Math.pow(1 + rate, -term));
-  }
-
-  //calculate interest for current balance
-function calcInterest(balance, rate){
-    return balance * rate;
-}
 
 //following is for the table
-function buildSchedule(){
+function myMortgage(){
   let loan = parseInt(document.getElementById("loanAmount").value);
   let rate = parseInt(document.getElementById("loanRate").value);
   let term = parseInt(document.getElementById("loanTerm").value);
@@ -19,12 +10,11 @@ function buildSchedule(){
   rate = rate / 1200;
 
 // set up some variables that hold values in the schedule
-let payment = calcPayment(loan, rate, term);
+let payment = (loan * rate) / (1 - Math.pow(1 + rate, -term));
 let balance = loan;
 let totalInterest = 0;
 let monthlyPrincipal = 0;
 let monthlyInterest = 0;
-let monthlyTotalInterest = 0;
 
 
 // write the results to our table
@@ -35,7 +25,7 @@ scheduleBody.innerHTML = "";
 
 for (month = 1; month <= term; month++){
 
-    monthlyInterest = calcInterest(balance, rate);
+    monthlyInterest = balance * rate;
     totalInterest += monthlyInterest;
     monthlyPrincipal = payment - monthlyInterest;
     balance = balance - monthlyPrincipal;
@@ -61,6 +51,7 @@ document.getElementById("totalPrincipal").innerHTML = `$${loan.toFixed(2)}`;
 
      document.getElementById("totalCost").innerHTML = `$${totalCost.toFixed(2)}`;
 }
+
 
     //  TABLE
 // Months    = the term input
