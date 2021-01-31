@@ -1,9 +1,8 @@
 document.getElementById("btnCalc").addEventListener("click", buildSchedule);
-// document.getElementById("scheduleTable").style.visibility = "visible";
 
 //calculate loan payment
-function calcPayment(amount, rate, term){
-    return (amount * rate) / (1 - Math.pow(1 + rate, -term));
+function calcPayment(loan, rate, term){
+    return (loan * rate) / (1 - Math.pow(1 + rate, -term));
   }
 
   //calculate interest for current balance
@@ -13,18 +12,15 @@ function calcInterest(balance, rate){
 
 //following is for the table
 function buildSchedule(){
-
-  // document.getElementById("scheduleTable").style.visibility = "visible";
-
-  let amount = document.getElementById("loanAmount").value;
-  let rate = document.getElementById("loanRate").value;
-  let term = document.getElementById("loanTerm").value;
+  let loan = parseInt(document.getElementById("loanAmount").value);
+  let rate = parseInt(document.getElementById("loanRate").value);
+  let term = parseInt(document.getElementById("loanTerm").value);
 
   rate = rate / 1200;
 
 // set up some variables that hold values in the schedule
-let payment = calcPayment(amount, rate, term);
-let balance = amount;
+let payment = calcPayment(loan, rate, term);
+let balance = loan;
 let totalInterest = 0;
 let monthlyPrincipal = 0;
 let monthlyInterest = 0;
@@ -55,27 +51,15 @@ for (month = 1; month <= term; month++){
    scheduleBody.innerHTML += scheduleRow;
 }
 
-document.getElementById("payment").innerHTML = Number(payment).toLocaleString("en-Us", {
-     style: "currency",
-     currency: "USD",
-});
+document.getElementById("payment").innerHTML = `$${payment.toFixed(2)}`;
 
-document.getElementById("totalPrincipal").innerHTML = Number(amount).toLocalString("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+document.getElementById("totalPrincipal").innerHTML = `$${loan.toFixed(2)}`;
 
-   document.getElementById("totalInterest").innerHTML = Number(totalInterest).toLocalString("en-US", {
-       style: "currency",
-       currency: "USD",
-     });
+   document.getElementById("totalInterest").innerHTML = `$${totalInterest.toFixed(2)}`;
      
-     let totalCost = Number(amount) + totalInterest;
+     let totalCost = loan + totalInterest;
 
-     document.getElementById("totalCost").innerHTML = Number(totalCost).toLocalString("en-US", {
-         style: "currency",
-         currency: "USD",
-       });
+     document.getElementById("totalCost").innerHTML = `$${totalCost.toFixed(2)}`;
 }
 
     //  TABLE
