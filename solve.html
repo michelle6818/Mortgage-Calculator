@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel='stylesheet' href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
 
   </head>
@@ -19,21 +20,21 @@
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation"></button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.html"><i class="bx bx-home-heart"></i>Home</a>
         </li>
             <li class="nav-item active">
-                <a class="nav-link" href="solve.html">Solve</a>
+                <a class="nav-link" href="solve.html"><i class="bx bx-glasses-alt"></i>Solve</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="code.html">Code</a>
+              <a class="nav-link" href="code.html"><i class="bx bxl-javascript"></i>Code</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://github.com/michelle6818/Mortgage-Calculator">GitHub</a>
+            <a class="nav-link" target="_blank" href="https://github.com/michelle6818/Mortgage-Calculator"><i class="bx bxl-github"></i>GitHub</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://michellelongworth-portfolio.netlify.app/index.html">Portfolio</a>
+            <a class="nav-link" target="_blank" href="https://michellelongworth-portfolio.netlify.app/index.html"><i class="bx bx-briefcase-alt"></i>Portfolio</a>
           </li>
         </ul>
     </div>
@@ -56,8 +57,10 @@
 <!-- This is where I lay out the UI for the exercise -->
 <div class="container">
   <div class="row" div id="top">
-    <div class="col-4 mr-2 mt-2" div="leftside">
-      <div class="row">
+    <div class="col-4 offset-1 mt-2" div="leftside">
+      <div class="card">
+        <div class="card-body">
+      <div class="row mt-3">
         <div class="col ml-2">
           <label for="loanAmount">Loan Amount $:</label>
         </div> 
@@ -81,15 +84,19 @@
           <input id="loanRate" type="number"> 
          </div>
           </div>
-          <br>
+         
       <div class="row mr-1 justify-content-end">
           <button id="btnCalc" class="btn btn-outline-dark">Calculate</button>
           <!-- <button id="btnClear" class="btn btn-outline-primary">Clear</button> -->
-      </div> 
-     </div> 
+    </div> 
+   </div> 
+    </div>
+  </div>
+ 
   
-
-  <div class="col-7 justify-content-end" id="rightside">
+  <div class="col-6 justify-content-end mt-2 offset-0" id="rightside">
+    <div class="card">
+      <div class="card-body">
     <div class="row">
       <div class="col">
         <div class="row justify-content-center">
@@ -113,6 +120,7 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div class="col ml-5">
          <h6>Total Interest:</h6>
@@ -123,6 +131,7 @@
            </div>
          </div>
       </div>
+      <br>
       <div class="row">
         <div class="col ml-5">
          <h6>Total Cost:</h6>
@@ -133,9 +142,12 @@
      </div>
   </div>
 </div>
+
 </div>
   </div>
     </div>
+  </div>
+  </div>
   </div>
 <!-- table -->
 <div class="row mt-5">
